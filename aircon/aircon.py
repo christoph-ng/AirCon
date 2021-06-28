@@ -116,7 +116,7 @@ class Device(object):
     # Update value precision for value sent from the A/C
     precision = self._properties.get_precision(name)
     if precision != 1:
-      value = round(value * precision)
+      value = value * precision
 
     if notify_value is None:
       notify_value = value
@@ -177,7 +177,7 @@ class Device(object):
     # Update value precision for value to be sent to the A/C
     precision = self._properties.get_precision(name)
     if precision != 1:
-      data_value = round(data_value / precision)
+      data_value = data_value / precision
 
     command = self._build_command(name, data_value)
     # There are (usually) no acks on commands, so also queue an update to the
